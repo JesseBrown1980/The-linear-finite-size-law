@@ -1,0 +1,35 @@
+name: GPT-6 independent linear finite-size law refutation attempt
+on:
+  pull_request:
+    paths:
+      - 'review-gpt6/**'
+      - '.github/workflows/gpt6-independent-refutation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-six-attack-certificate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Derive S3 electric frame weights and enumerate every relaxed lump for L4-L6
+        run: |
+          set -euo pipefail
+          mkdir -p build/review-gpt6
+          python3 -I -B review-gpt6/independent_refutation.py | tee build/review-gpt6/REVIEW.hbp
+          test "$(grep -c '^REVIEW_EXACT|' build/review-gpt6/REVIEW.hbp)" -eq 21
+          grep -Fq 'REVIEW_FRAME|independent_group_S3=PASS|same_TT_smaller=PASS|special_flat_weight=PASS|' build/review-gpt6/REVIEW.hbp
+          grep -Fq 'REVIEW_REAL|L=4|r=12|configuration=NONCOMMUTING_BOUNDARY_SEAMS|plaquette_lump=0,1|raw_moves=96|ratio=3729/32|ratio_minus_flat_bound=657/32|pass=1|' build/review-gpt6/REVIEW.hbp
+          grep -Fq 'REVIEW_DONE|S3_weights=PASS|cases=PASS|exact_L4_L5_L6_points=21|real_4x4=PASS|threshold_algebra=PASS|counterexample=NONE_FOUND|' build/review-gpt6/REVIEW.hbp
+      - name: Independent receipt source audit
+        run: |
+          set -euo pipefail
+          python3 -m py_compile review-gpt6/independent_refutation.py
+          ! grep -Eq '^(import|from) (linear_finite_size_law|product_bound|local_table)' review-gpt6/independent_refutation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gpt6-independent-L4-L6-and-real-S3-witness
+          path: build/review-gpt6/REVIEW.hbp
+          if-no-files-found: error
+          retention-days: 90

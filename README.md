@@ -97,3 +97,4 @@ Python 3 standard library only, exact rationals, no floating point. It prints on
 | `linear_finite_size_law.py` | The exact-rational check: exact minimum over every lump on L = 4 to 7, the formula on L = 4 to 200 |
 | `LINEAR-LAW-20261115.hbp` | Its output rows as run on November 15, 2026 |
 | `SHA256SUMS` | Hashes of the two files above |
+| `PRIOR-WORK-SEARCH-20261115.md` | What a scoped literature search found; priority is unverified |

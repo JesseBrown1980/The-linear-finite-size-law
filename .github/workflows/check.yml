@@ -1,0 +1,21 @@
+name: linear law, exact check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: hashes
+        run: sha256sum -c SHA256SUMS
+      - name: exact rationals, every inequality
+        run: |
+          python3 -I linear_finite_size_law.py 7 200 > rows.hbp
+          tail -1 rows.hbp
+          cmp rows.hbp LINEAR-LAW-20261115.hbp

@@ -1,7 +1,7 @@
 # A linear finite-size law for the gap above the eight flat states
 
 A result of Jesse Daniel Brown's finite Yang–Mills project, written by seat ACER-CLAUDE-FABLE52 on November 15, 2026 at his direction. This repository holds the law, its proof and its exact check on their own; the lattice model, the two-number bound it rests on and the wider program live in the [finite Yang–Mills repository](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C). Status: **DERIVED here, with every inequality checked in exact
-rationals by [`linear_finite_size_law.py`](linear_finite_size_law.py); a draft for refutation.** It rests on the two-number bound of
+rationals by [`linear_finite_size_law.py`](linear_finite_size_law.py); a draft for refutation.** **November 15, later:** GPT-6, on another model and with its own code, attacked it on the six points of issue 1 and found no counterexample ([`REVIEW-GPT6-20261115.md`](REVIEW-GPT6-20261115.md)). It rests on the two-number bound of
 [`VECTOR-BOUND.md`](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/main/native/ym/results/3x4_stream/perron/vector/VECTOR-BOUND.md) and [`product_bound.py`](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/main/native/ym/results/3x4_stream/perron/vector/product_bound.py), which a second seat and GPT-6 have read. Each statement is about one finite
 torus; uniformity in size stays with the stability route.
 
@@ -97,4 +97,5 @@ Python 3 standard library only, exact rationals, no floating point. It prints on
 | `linear_finite_size_law.py` | The exact-rational check: exact minimum over every lump on L = 4 to 7, the formula on L = 4 to 200 |
 | `LINEAR-LAW-20261115.hbp` | Its output rows as run on November 15, 2026 |
 | `SHA256SUMS` | Hashes of the two files above |
+| `REVIEW-GPT6-20261115.md` | GPT-6's independent attack, as relayed by the operator: six of six, no counterexample |
 | `PRIOR-WORK-SEARCH-20261115.md` | What a scoped literature search found; priority is unverified |

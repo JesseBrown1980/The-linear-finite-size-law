@@ -1,9 +1,15 @@
 # A linear finite-size law for the gap above the eight flat states
 
 A result of Jesse Daniel Brown's finite Yang–Mills project, written by seat ACER-CLAUDE-FABLE52 on November 15, 2026 at his direction. This repository holds the law, its proof and its exact check on their own; the lattice model, the two-number bound it rests on and the wider program live in the [finite Yang–Mills repository](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C). Status: **DERIVED here, with every inequality checked in exact
-rationals by [`linear_finite_size_law.py`](linear_finite_size_law.py); a draft for refutation.** **November 15, later:** GPT-6, on another model and with its own code, attacked it on the six points of issue 1 and found no counterexample ([`REVIEW-GPT6-20261115.md`](REVIEW-GPT6-20261115.md)). It rests on the two-number bound of
+rationals by [`linear_finite_size_law.py`](linear_finite_size_law.py); the six-part independent refutation check passed in its declared scope.** **November 15, later:** GPT-6, on another model and with its own code, attacked it on the six points of issue 1 and found no counterexample ([`REVIEW-GPT6-20261115.md`](REVIEW-GPT6-20261115.md)). It rests on the two-number bound of
 [`VECTOR-BOUND.md`](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/main/native/ym/results/3x4_stream/perron/vector/VECTOR-BOUND.md) and [`product_bound.py`](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/main/native/ym/results/3x4_stream/perron/vector/product_bound.py), which a second seat and GPT-6 have read. Each statement is about one finite
 torus; uniformity in size stays with the stability route.
+
+## November 16, 2026 — exact independent check and companion repositories
+
+The original proof and its SHA-pinned output remain unchanged. A separately implemented [GPT-6 exact verifier (PR #2)](https://github.com/JesseBrown1980/The-linear-finite-size-law/pull/2) reconstructs S₃ from permutations, derives the electric-frame weights, tests **21/21** independent exact rational minima for `L = 4, 5, 6`, and checks one genuine periodic **4×4, 96-move** electric row at `r = 12`. The row gives `(H′d)/d = 3729/32`; subtracting the eight-flat upper bound `96` gives **`657/32 = 20.53125`**, compared with the theorem's weaker **`27/64 = 0.421875`** lower bound at that point. The hosted independent review and original exact checker both passed. The initial 21-point comparison is a reproducible adversarial check, while the theorem statement itself is the algebraic finite-`L` inequality below, conditional on the original spectral-comparison input.
+
+This law belongs to the [finite Yang–Mills `S₃` project](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/main/README.md), alongside its separately certified 3×4 source/graph/third-moment results. The [4D continuous-`SU(2)` continuum project](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/main/README.md) uses these finite computations as methodological references; the coupling threshold here **grows linearly with side `L`**, and this bound alone does not establish a fixed-coupling uniform-volume gap, a `β(a)→∞` step-scaling inequality, or a physical continuum mass gap. Independent outside review and formal proof-assistant checking remain future gates.
 
 ## Statement
 
@@ -80,7 +86,7 @@ The exact minimum sits well above the closed form (its tight lump is (0, 1), one
 - The statement inherits the scope of the two-number bound: the pattern table, the three constraints and the chain E₉ ≥ λ₁(H′) ≥ min ratio, E₈ ≤ 3·nl of `VECTOR-BOUND.md`.
 - It is a finite-size law: the threshold grows with L. A threshold independent of L is the stability theorem's claim, whose constant r₀ is not available as a number
   ([`STABILITY-ROUTE-CHECKS-20261115.md`](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/pull/201)).
-- A reader on another model, and a proof in a proof assistant, are open.
+- A separately coded GPT-6 checker has now passed on another model and on hosted CI (PR #2). Independent external review and formal proof-assistant checking remain open.
 
 ## Reproduce
 
